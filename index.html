@@ -4,46 +4,191 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PFERD TOOLS AR Demo</title>
+
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
+
 <style>
-body{margin:0;overflow:hidden;font-family:Arial,sans-serif;}
-#overlay{display:none;position:fixed;top:20px;left:20px;background:rgba(0,0,0,.7);color:#fff;padding:10px;border-radius:8px;z-index:10;}
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(0,0,0,0.8);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid #00ffff;
+}
 </style>
 </head>
+
 <body>
-<div id="overlay">PFERD TOOLS erkannt</div>
-<a-scene embedded vr-mode-ui="enabled:false" arjs="sourceType:webcam; debugUIEnabled:false;">
-<a-marker preset="hiro" id="hiro-marker">
 
-<a-plane position="0 1 0" width="2.5" height="1.5" color="#001133" opacity="0.85"></a-plane>
+<div id="overlay">
+    PFERD TOOLS erkannt
+</div>
 
-<a-text value="PFERD TOOLS" position="-1 1.4 0.01" color="#00FFFF" scale="0.7 0.7 0.7"></a-text>
-<a-text value="Gegruendet: 1799" position="-1 1.1 0.01" color="white"></a-text>
-<a-text value="Standort: Marienheide" position="-1 0.9 0.01" color="white"></a-text>
-<a-text value="Mitarbeiter: 2100" position="-1 0.7 0.01" color="white"></a-text>
-<a-text value="Umsatz: 370 Mio EUR" position="-1 0.5 0.01" color="white"></a-text>
-<a-text value="Schleifen | Trennen" position="-1 0.2 0.01" color="#00FF88"></a-text>
-<a-text value="Fraesen | Entgraten" position="-1 0.0 0.01" color="#00FF88"></a-text>
+<a-scene
+    embedded
+    vr-mode-ui="enabled: false"
+    renderer="logarithmicDepthBuffer: true;"
+    arjs="sourceType: webcam; debugUIEnabled: false;">
 
-<a-cylinder position="0 0.8 0" radius="0.25" height="0.08" color="#00FFFF" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000"></a-cylinder>
+    <a-marker preset="hiro" id="hiro-marker">
 
-<a-ring radius-inner="0.35" radius-outer="0.45" position="0 0.8 0" rotation="90 0 0" color="#00FF88" animation="property: rotation; to: 360 0 0; loop: true; dur: 4000"></a-ring>
+        <!-- Dashboard -->
 
-<a-ring radius-inner="0.45" radius-outer="0.55" position="1 1 0" rotation="90 0 0" color="#00FFFF" animation="property: rotation; to: 90 360 0; loop: true; dur: 5000"></a-ring>
+        <a-plane
+            position="0 1.8 0"
+            width="5"
+            height="3"
+            color="#001133"
+            opacity="0.85">
+        </a-plane>
 
-<a-sphere position="1 1 0.1" radius="0.08" color="lime" animation="property: scale; from: 1 1 1; to: 1.5 1.5 1.5; dir: alternate; loop: true; dur: 1000"></a-sphere>
+        <a-text
+            value="PFERD TOOLS"
+            position="-2.2 2.8 0.01"
+            color="#00FFFF"
+            scale="1.2 1.2 1.2">
+        </a-text>
 
-<a-text value="SYSTEM ONLINE" position="-0.6 1.6 0" color="lime"></a-text>
+        <a-text
+            value="Gegruendet: 1799"
+            position="-2.2 2.2 0.01"
+            color="white"
+            scale="0.8 0.8 0.8">
+        </a-text>
 
-</a-marker>
-<a-entity camera></a-entity>
+        <a-text
+            value="Standort: Marienheide"
+            position="-2.2 1.8 0.01"
+            color="white"
+            scale="0.8 0.8 0.8">
+        </a-text>
+
+        <a-text
+            value="Mitarbeiter: 2100"
+            position="-2.2 1.4 0.01"
+            color="white"
+            scale="0.8 0.8 0.8">
+        </a-text>
+
+        <a-text
+            value="Umsatz: 370 Mio EUR"
+            position="-2.2 1.0 0.01"
+            color="white"
+            scale="0.8 0.8 0.8">
+        </a-text>
+
+        <a-text
+            value="Werkzeuge fuer Metallbearbeitung"
+            position="-2.2 0.5 0.01"
+            color="#00FF88"
+            scale="0.8 0.8 0.8">
+        </a-text>
+
+        <a-text
+            value="Schleifen | Trennen | Fraesen"
+            position="-2.2 0.1 0.01"
+            color="#00FF88"
+            scale="0.8 0.8 0.8">
+        </a-text>
+
+        <!-- Hologramm Ring -->
+
+        <a-torus
+            position="2 1.8 0"
+            radius="0.8"
+            radius-tubular="0.12"
+            color="#00FFFF"
+            animation="
+                property: rotation;
+                to: 0 360 0;
+                loop: true;
+                dur: 2500">
+        </a-torus>
+
+        <!-- Zweiter Ring -->
+
+        <a-ring
+            radius-inner="0.95"
+            radius-outer="1.05"
+            position="2 1.8 0"
+            rotation="90 0 0"
+            color="#00FF88"
+            animation="
+                property: rotation;
+                to: 360 0 360;
+                loop: true;
+                dur: 4000">
+        </a-ring>
+
+        <!-- Status LED -->
+
+        <a-sphere
+            position="2 1.8 0.2"
+            radius="0.15"
+            color="lime"
+            animation="
+                property: scale;
+                from: 1 1 1;
+                to: 1.8 1.8 1.8;
+                dir: alternate;
+                loop: true;
+                dur: 1000">
+        </a-sphere>
+
+        <a-text
+            value="SYSTEM ONLINE"
+            position="1.1 2.9 0"
+            color="lime"
+            scale="0.7 0.7 0.7">
+        </a-text>
+
+        <!-- Zahnrad -->
+
+        <a-cylinder
+            position="0 0.7 0"
+            radius="0.35"
+            height="0.1"
+            color="#00FFFF"
+            animation="
+                property: rotation;
+                to: 0 360 0;
+                loop: true;
+                dur: 2000">
+        </a-cylinder>
+
+    </a-marker>
+
+    <a-entity camera></a-entity>
+
 </a-scene>
+
 <script>
-const marker=document.getElementById('hiro-marker');
-const overlay=document.getElementById('overlay');
-marker.addEventListener('markerFound',()=>overlay.style.display='block');
-marker.addEventListener('markerLost',()=>overlay.style.display='none');
+
+const marker = document.getElementById('hiro-marker');
+const overlay = document.getElementById('overlay');
+
+marker.addEventListener('markerFound', () => {
+    overlay.style.display = 'block';
+});
+
+marker.addEventListener('markerLost', () => {
+    overlay.style.display = 'none';
+});
+
 </script>
+
 </body>
 </html>
+``
